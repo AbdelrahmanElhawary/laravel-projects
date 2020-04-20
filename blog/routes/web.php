@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -37,8 +37,13 @@ Route::get('/Product/finished','ProductController@finished');
 Route::get('/Product/{product}/delete','ProductController@delete');
 Route::get('/Product/{product}/edit','ProductController@edit');
 Route::patch('/Product/{product}','ProductController@update');
+Route::post('/Product/add/{product}','ProductController@add');
 
-
+Route::get('/home/Product/addtocart/{product}','CartController@add');
+Route::get('/home/mycart/{user}',[
+'uses'=>'CartController@ShowMyCart',
+'as'=>'/home/mycart'
+]);
 
 Route::group(['middleware'=>'auth'],function(){
     route::get('/home',function(){

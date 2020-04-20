@@ -11,9 +11,9 @@
                     <img src="/storage/{{$rw->image}}" class="w-100">
                 </a>
                 <div class="d-flex justify-content-between pt-2" >
-                <div >number of products : {{$rw->products->count()}}</div>
-                <a href="/Category/{{$rw->id}}/delete">remove</a>
-                <a href="/Category/{{$rw->id}}/edit">Edit</a>
+                <div >products : {{$rw->products->where('quantity','>',0)->count()}}</div>
+                <a href="/Category/{{$rw->id}}/delete"style="text-decoration: none">remove</a>
+                <a href="/Category/{{$rw->id}}/edit"style="text-decoration: none">Edit</a>
                 </div>
                 
             </div>

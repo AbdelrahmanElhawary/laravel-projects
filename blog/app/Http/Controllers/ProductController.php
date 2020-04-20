@@ -52,7 +52,7 @@ class ProductController extends Controller
     public function delete($product)
     {
        DB::table('products')->where('id',$product)->delete();
-       return redirect('/dashboard'); 
+       return redirect()->back(); 
     }
     public function update(\App\product $product)
     {
@@ -88,5 +88,16 @@ class ProductController extends Controller
         $product->save();
         $cat=\App\Category::find($product->category_id); 
         return view('admin.show',['cat'=>$cat]);
+    }
+    public function add(\App\product $product)
+    {
+        if(auth()->user()->is_admin()==false)
+        return redirect()->back();
+        $data=request()->validate([
+            'quantity'=>'required'
+        ]);
+        $product->quantity=$data['quantity'];
+        $product->save();
+        return redirect()->back();
     }
 }

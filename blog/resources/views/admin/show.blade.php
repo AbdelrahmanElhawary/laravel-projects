@@ -12,8 +12,8 @@
                     <div class="d-flex justify-content-between">
                         <div>price = {{$pro->price}}&#36;</div>
                         <div>quantity = {{$pro->quantity}}</div>
-                        <a href="/Product/{{$pro->id}}/delete">remove</a>
-                        <a href="/Product/{{$pro->id}}/edit">Edit</a>
+                        <a href="/Product/{{$pro->id}}/delete"style="text-decoration: none">remove</a>
+                        <a href="/Product/{{$pro->id}}/edit"style="text-decoration: none">Edit</a>
                     </div>
                 </div>
             @endif

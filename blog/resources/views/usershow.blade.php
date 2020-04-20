@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('content')
 <div class="container">
     <h2>{{$cat->name}}</h2>
+        {{$user->id}}
     <div class="row pt-5">
         @foreach($cat->products as $pro)
             @if($pro->quantity>0)
@@ -12,8 +13,9 @@
                     <div class="d-flex justify-content-between">
                         <div class="pt-3">price = {{$pro->price}}&#36;</div>
                         <div class="pt-3">quantity = {{$pro->quantity}}</div>    
-                        <button class="btn btn-primary">Add to cart</button>
-                        
+                        <div class="pt-2" style="height:10px">
+                                <a href="Product/addtocart/{{$pro->id}}"><button class="btn btn-primary">Add to cart</button></a>
+                            </div>                        
                     </div>
                 </div>
 
