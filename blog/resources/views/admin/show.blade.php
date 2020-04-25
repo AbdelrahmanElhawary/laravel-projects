@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    @if($cat->products->where('quantity','>',0)->count())
     <h2>{{$cat->name}}</h2>
     <div class="row pt-5">
         @foreach($cat->products as $pro)
@@ -19,5 +20,8 @@
             @endif
         @endforeach
     </div>
+    @else
+    <div class="d-flex justify-content-center pt-5"><h2>There is no products in {{$cat->name}}</h2></div>
+    @endif
 </div>
 @endsection

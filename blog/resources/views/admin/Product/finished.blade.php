@@ -2,9 +2,8 @@
 
 @section('content')
 <div class="container">
+    @if($data->where('quantity','=',0)->count())
     <h2>Finished products</h2>
-   
-  </form>
     <div class="row pt-5">
         @foreach($data as $pro)
             @if($pro->quantity==0)
@@ -35,5 +34,8 @@
             @endif
         @endforeach
     </div>
+    @else
+    <div class="d-flex justify-content-center pt-5"><h2>There is no finished products</h2></div>
+    @endif
 </div>
 @endsection

@@ -1,9 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <h3>Dashboard</h3>
-    <?php echo e($user->id); ?>
-
-
     <div class="row pt-5">
         <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rw): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-4 pb-4" >

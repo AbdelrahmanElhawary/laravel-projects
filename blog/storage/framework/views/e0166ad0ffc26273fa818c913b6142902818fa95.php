@@ -1,5 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
+    <?php if($cat->products->where('quantity','>',0)->count()): ?>
     <h2><?php echo e($cat->name); ?></h2>
     <div class="row pt-5">
         <?php $__currentLoopData = $cat->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -17,6 +18,9 @@
             <?php endif; ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
+    <?php else: ?>
+    <div class="d-flex justify-content-center pt-5"><h2>There is no products in <?php echo e($cat->name); ?></h2></div>
+    <?php endif; ?>
 </div>
 <?php $__env->stopSection(); ?>
 

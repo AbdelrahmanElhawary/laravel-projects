@@ -1,5 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
+    <?php if($data->count()): ?>
     <h3>dashboard</h3>
     <div class="row pt-5">
         <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rw): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -17,6 +18,9 @@
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
+    <?php else: ?>
+    <div class="d-flex justify-content-center pt-5"><h2>There is no categories</h2></div>
+    <?php endif; ?>
 </div>
 <?php $__env->stopSection(); ?>
 

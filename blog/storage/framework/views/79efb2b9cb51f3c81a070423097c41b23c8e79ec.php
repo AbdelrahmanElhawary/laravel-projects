@@ -18,12 +18,23 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <style>
+    .circle-icon {
+    background: #a9a9a9;
+    padding:2px;
+    border-radius: 60%;
+    }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/home')); ?>">Home</a>
+                <?php ($id=Auth::user()->id); ?>
+                <a class="navbar-brand" href="<?php echo e(url('/home/cart')); ?>">MyCart 
+                <sup class="fa fa-bicycle fa-5x circle-icon"><?php echo e(session($id)->ItemsQuntity??0); ?></sup></a>
+                <a class="navbar-brand" href="<?php echo e(url('/home/history')); ?>">History</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>

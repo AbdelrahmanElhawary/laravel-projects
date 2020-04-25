@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    @if($data->count())
     <h3>dashboard</h3>
     <div class="row pt-5">
         @foreach($data as $rw)
@@ -19,5 +20,8 @@
             </div>
         @endforeach
     </div>
+    @else
+    <div class="d-flex justify-content-center pt-5"><h2>There is no categories</h2></div>
+    @endif
 </div>
 @endsection

@@ -3,7 +3,6 @@
 @section('content')
 <div class="container">
     <h2>{{$cat->name}}</h2>
-        {{$user->id}}
     <div class="row pt-5">
         @foreach($cat->products as $pro)
             @if($pro->quantity>0)
@@ -18,7 +17,6 @@
                             </div>                        
                     </div>
                 </div>
-
             @endif
         @endforeach
     </div>

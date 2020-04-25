@@ -1,8 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <h2><?php echo e($cat->name); ?></h2>
-        <?php echo e($user->id); ?>
-
     <div class="row pt-5">
         <?php $__currentLoopData = $cat->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php if($pro->quantity>0): ?>
@@ -17,7 +15,6 @@
                             </div>                        
                     </div>
                 </div>
-
             <?php endif; ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>

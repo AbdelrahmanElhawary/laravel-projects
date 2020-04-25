@@ -3,8 +3,6 @@
 @section('content')
 <div class="container">
     <h3>Dashboard</h3>
-    {{$user->id}}
-
     <div class="row pt-5">
         @foreach($data as $rw)
             <div class="col-4 pb-4" >

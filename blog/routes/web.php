@@ -28,32 +28,28 @@ Route::get('/Category/{category}/edit','CategoryController@edit');
 Route::get('/Category/{category}/delete','CategoryController@delete');
 Route::patch('/Category/{category}','CategoryController@update');
 
-Route::get('/home/cart','HomeController@cart');
-Route::get('/home/{category}','HomeController@show');
 
 Route::get('/Product/create','ProductController@create');
 Route::post('/Product/store','ProductController@store');
 Route::get('/Product/finished','ProductController@finished');
+Route::post('/Product/add/{product}','ProductController@add');
 Route::get('/Product/{product}/delete','ProductController@delete');
 Route::get('/Product/{product}/edit','ProductController@edit');
 Route::patch('/Product/{product}','ProductController@update');
-Route::post('/Product/add/{product}','ProductController@add');
 
-Route::get('/home/Product/addtocart/{product}','CartController@add');
-Route::get('/home/mycart/{user}',[
-'uses'=>'CartController@ShowMyCart',
-'as'=>'/home/mycart'
-]);
-
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>['auth','web']],function(){
     route::get('/home',function(){
         $data=App\Category::all();
-        $user=Session()->get('user');
-        return view('home',['data'=>$data,'user'=>$user]);
+        return view('home',['data'=>$data]);
     })->name('home');
     route::get('/dashboard',function(){
         $data=App\Category::all();
-        $user=Session()->get('user');
-        return view('admin/dashboard',['data'=>$data,'user'=>$user]);
+        return view('admin/dashboard',['data'=>$data]);
     })->name('dashboard');
+    Route::get('/home/Product/addtocart/{product}','CartController@add');
+    Route::get('/home/Product/buycart','CartController@buy');
+    Route::get('/home/Product/removefromcart/{product}','CartController@remove');
+    Route::get('/home/cart','CartController@show');
+    Route::get('/home/history','HomeController@history');
+    Route::get('/home/{category}','HomeController@show');
 });
